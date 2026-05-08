@@ -1,9 +1,9 @@
 'use strict'
 
 const { parallelLimit } = require('async')
-const BaseMiner = require('miningos-tpl-wrk-miner/workers/lib/base')
+const BaseMiner = require('@tetherto/miningos-tpl-wrk-miner/workers/lib/base')
 const { ErrorMap } = require('./util/errors')
-const { STATUS, POWER_MODE } = require('miningos-tpl-wrk-miner/workers/lib/constants')
+const { STATUS, POWER_MODE } = require('@tetherto/miningos-tpl-wrk-miner/workers/lib/constants')
 
 class AntminerMiner extends BaseMiner {
   constructor (opts = {}) {

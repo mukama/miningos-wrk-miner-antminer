@@ -1,7 +1,7 @@
 'use strict'
 
-const libAlerts = require('miningos-tpl-wrk-miner/workers/lib/alerts')
-const libUtils = require('miningos-tpl-wrk-miner/workers/lib/utils')
+const libAlerts = require('@tetherto/miningos-tpl-wrk-miner/workers/lib/alerts')
+const libUtils = require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils')
 
 libAlerts.specs.miner = {
   ...libAlerts.specs.miner_default,

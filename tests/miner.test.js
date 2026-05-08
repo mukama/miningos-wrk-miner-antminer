@@ -1,6 +1,6 @@
 'use strict'
 
-const { getDefaultConf, testExecutor } = require('miningos-tpl-wrk-miner/tests/miner.test')
+const { getDefaultConf, testExecutor } = require('@tetherto/miningos-tpl-wrk-miner/tests/miner.test')
 const Miner = require('../workers/lib/miner')
 const srv = require('../mock/server')
 const crypto = require('crypto')

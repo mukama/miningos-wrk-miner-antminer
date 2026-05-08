@@ -14,18 +14,18 @@ test('max_outlet_temp_warning - valid function returns true for valid snap', (t)
   }
 
   // Mock the utility functions
-  const originalIsValidSnap = require('miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap
-  const originalIsOffline = require('miningos-tpl-wrk-miner/workers/lib/utils').isOffline
+  const originalIsValidSnap = require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap
+  const originalIsOffline = require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isOffline
 
-  require('miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap = () => true
-  require('miningos-tpl-wrk-miner/workers/lib/utils').isOffline = () => false
+  require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap = () => true
+  require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isOffline = () => false
 
   const result = alerts.specs.miner.max_outlet_temp_warning.valid(ctx, snap)
   t.is(result, true)
 
   // Restore original functions
-  require('miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap = originalIsValidSnap
-  require('miningos-tpl-wrk-miner/workers/lib/utils').isOffline = originalIsOffline
+  require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap = originalIsValidSnap
+  require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isOffline = originalIsOffline
 })
 
 test('max_outlet_temp_warning - probe function detects high outlet temperature', (t) => {
@@ -185,18 +185,18 @@ test('alert valid functions return false for invalid snap', (t) => {
   const snap = null
 
   // Mock the utility functions to return false
-  const originalIsValidSnap = require('miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap
-  const originalIsOffline = require('miningos-tpl-wrk-miner/workers/lib/utils').isOffline
+  const originalIsValidSnap = require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap
+  const originalIsOffline = require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isOffline
 
-  require('miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap = () => false
-  require('miningos-tpl-wrk-miner/workers/lib/utils').isOffline = () => false
+  require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap = () => false
+  require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isOffline = () => false
 
   const result = alerts.specs.miner.max_outlet_temp_warning.valid(ctx, snap)
   t.is(result, false)
 
   // Restore original functions
-  require('miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap = originalIsValidSnap
-  require('miningos-tpl-wrk-miner/workers/lib/utils').isOffline = originalIsOffline
+  require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap = originalIsValidSnap
+  require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isOffline = originalIsOffline
 })
 
 test('alert valid functions return false when offline', (t) => {
@@ -210,16 +210,16 @@ test('alert valid functions return false when offline', (t) => {
   }
 
   // Mock the utility functions
-  const originalIsValidSnap = require('miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap
-  const originalIsOffline = require('miningos-tpl-wrk-miner/workers/lib/utils').isOffline
+  const originalIsValidSnap = require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap
+  const originalIsOffline = require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isOffline
 
-  require('miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap = () => true
-  require('miningos-tpl-wrk-miner/workers/lib/utils').isOffline = () => true
+  require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap = () => true
+  require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isOffline = () => true
 
   const result = alerts.specs.miner.max_outlet_temp_warning.valid(ctx, snap)
   t.is(result, false)
 
   // Restore original functions
-  require('miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap = originalIsValidSnap
-  require('miningos-tpl-wrk-miner/workers/lib/utils').isOffline = originalIsOffline
+  require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isValidSnap = originalIsValidSnap
+  require('@tetherto/miningos-tpl-wrk-miner/workers/lib/utils').isOffline = originalIsOffline
 })

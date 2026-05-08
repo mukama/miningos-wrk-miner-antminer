@@ -1,6 +1,6 @@
 'use strict'
 
-const WrkRack = require('miningos-tpl-wrk-miner/workers/rack.miner.wrk')
+const WrkRack = require('@tetherto/miningos-tpl-wrk-miner/workers/rack.miner.wrk')
 const Miner = require('./miner.js')
 
 const DEFAULT_PORT = 80
