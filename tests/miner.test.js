@@ -35,6 +35,11 @@ conf.cleanup = async () => {
 
 const execute = async () => {
   try {
+    // Wait for the mock server to be listening before issuing requests,
+    // otherwise the first request can race server startup (ECONNREFUSED).
+    if (mockServer && mockServer.ready) {
+      await mockServer.ready
+    }
     await miner._setupClient()
     await testExecutor(miner, conf)
   } finally {
@@ -44,6 +49,13 @@ const execute = async () => {
     }
     // Give time for connections to close
     await new Promise(resolve => setTimeout(resolve, 2000))
+    // `brittle --coverage` writes its report on the 'beforeExit' event, which
+    // process.exit() skips. Flush those listeners so coverage-final.json is
+    // produced (a 2-min setLED timer otherwise keeps the process from exiting
+    // on its own).
+    for (const listener of process.listeners('beforeExit')) {
+      await listener(0)
+    }
     process.exit(0)
   }
 }

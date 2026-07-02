@@ -168,16 +168,20 @@ function runServer (argv, ops = {}) {
   }
 
   app.addHook('onClose', STATE.cleanup)
-  app.listen({ port: argv.port, host: argv.host }, function (err, addr) {
-    if (err) {
-      debug(err)
-      throw err
-    }
-    debug(`Server listening for HTTP requests on socket ${addr}`)
+  const ready = new Promise((resolve, reject) => {
+    app.listen({ port: argv.port, host: argv.host }, function (err, addr) {
+      if (err) {
+        debug(err)
+        return reject(err)
+      }
+      debug(`Server listening for HTTP requests on socket ${addr}`)
+      resolve(addr)
+    })
   })
 
   return {
     state: STATE.state,
+    ready,
     stop: () => {
       app.close()
     },
